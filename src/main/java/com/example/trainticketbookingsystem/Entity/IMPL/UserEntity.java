@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Datacr
 public class UserEntity implements SuperEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
