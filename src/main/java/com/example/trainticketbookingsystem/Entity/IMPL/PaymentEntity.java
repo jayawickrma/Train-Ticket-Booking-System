@@ -1,4 +1,24 @@
 package com.example.trainticketbookingsystem.Entity.IMPL;
 
-public class PaymentEntity {
+import com.example.trainticketbookingsystem.Entity.SuperEntity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class PaymentEntity implements SuperEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long paymentId;
+
+    private LocalDateTime paymentDate;
+    private Double amount;
+    private String paymentStatus;
+
+    @OneToOne(mappedBy = "payment")
+    private BookingEntity booking;
+
 }
