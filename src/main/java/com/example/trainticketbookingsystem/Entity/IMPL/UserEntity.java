@@ -1,6 +1,7 @@
 package com.example.trainticketbookingsystem.Entity.IMPL;
 
 import com.example.trainticketbookingsystem.Entity.SuperEntity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Entity
+@Table(name = "User")
 public class UserEntity implements SuperEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
