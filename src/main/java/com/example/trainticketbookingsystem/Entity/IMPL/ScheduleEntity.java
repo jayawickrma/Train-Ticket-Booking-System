@@ -13,10 +13,10 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "Schedule")
-public class SheduleEntity implements SuperEntity {
+public class ScheduleEntity implements SuperEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long scheduleId;
+    private String scheduleId;
 
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;

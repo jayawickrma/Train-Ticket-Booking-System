@@ -17,9 +17,10 @@ import java.util.List;
 public class UserEntity implements SuperEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private String userId;
 
     private String name;
+    @Column(unique = true)
     private String email;
     private String phoneNumber;
     private String password;

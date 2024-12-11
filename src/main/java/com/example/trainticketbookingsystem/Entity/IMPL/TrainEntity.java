@@ -17,16 +17,16 @@ import java.util.List;
 public class TrainEntity implements SuperEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long trainId;
+    private String trainId;
 
     private String trainName;
     private String route;
-    private Integer capacity;
+    private int capacity;
 
     @ManyToMany(mappedBy = "trains")
     private List<BookingEntity> bookings;
 
     @OneToMany(mappedBy = "train", cascade = CascadeType.ALL)
-    private List<SheduleEntity> schedules;
+    private List<ScheduleEntity> schedules;
 
 }

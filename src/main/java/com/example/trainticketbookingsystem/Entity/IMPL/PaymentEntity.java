@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class PaymentEntity implements SuperEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long paymentId;
+    private String paymentId;
 
     private LocalDateTime paymentDate;
     private Double amount;
