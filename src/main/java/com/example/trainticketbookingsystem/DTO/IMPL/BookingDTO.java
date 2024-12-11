@@ -1,5 +1,6 @@
-package com.example.trainticketbookingsystem.DTO;
+package com.example.trainticketbookingsystem.DTO.IMPL;
 
+import com.example.trainticketbookingsystem.DTO.SuperDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class BookingDTO {
+public class BookingDTO implements SuperDTO {
     private String bookingId;
     private LocalDate bookingDate;
     private Double totalPrice;
