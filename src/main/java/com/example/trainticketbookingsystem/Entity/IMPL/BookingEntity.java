@@ -18,14 +18,14 @@ import java.util.List;
 public class BookingEntity implements SuperEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bookingId;
+    private String bookingId;
 
     private LocalDate bookingDate;
     private Double totalPrice;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserEntity user;
 
     @ManyToMany
     @JoinTable(
