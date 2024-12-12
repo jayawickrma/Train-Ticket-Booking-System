@@ -25,7 +25,7 @@ public class ScheduleServiceIMPL implements ScheduleService {
     public void saveSchedule(ScheduleDTO scheduleDTO) {
 
         ScheduleEntity scheduleEntity =mapping.toScheduleEntity(scheduleDTO);
-        TrainEntity train =trainDAO.getReferenceById(scheduleDTO.getTrain());
+        TrainEntity train =trainDAO.getReferenceById(scheduleDTO.getTrainId());
         scheduleEntity.setTrain(train);
 
         ScheduleEntity schedule =scheduleDAO.save(scheduleEntity);

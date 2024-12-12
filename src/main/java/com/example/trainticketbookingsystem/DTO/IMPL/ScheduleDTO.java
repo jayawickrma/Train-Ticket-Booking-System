@@ -15,5 +15,6 @@ public class ScheduleDTO implements SuperDTO {
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
     private LocalDate date;
-    private  String train;
+
+    private String trainId;
 }

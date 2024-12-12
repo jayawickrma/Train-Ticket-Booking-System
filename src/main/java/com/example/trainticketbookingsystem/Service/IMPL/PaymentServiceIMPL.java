@@ -24,7 +24,7 @@ public class PaymentServiceIMPL implements PaymentService {
     @Override
     public void savePayment(PaymentDTO paymentDTO) {
         PaymentEntity payment =mapping.toPaymentEntity(paymentDTO);
-        BookingEntity booking =bookingDAO.getReferenceById(paymentDTO.getBooking());
+        BookingEntity booking =bookingDAO.getReferenceById(paymentDTO.getBookingId());
         payment.setBooking(booking);
 
         PaymentEntity paymentEntity =paymentDAO.save(payment);

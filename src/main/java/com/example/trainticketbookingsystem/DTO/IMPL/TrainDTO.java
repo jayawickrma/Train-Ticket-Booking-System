@@ -11,9 +11,10 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class TrainDTO implements SuperDTO {
-    @Id
     private String trainId;
     private String trainName;
     private String route;
-    private int capacity;
+    private Integer capacity;
+    private List<String> scheduleIds;
+    private List<String> bookingIds;
 }

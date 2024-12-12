@@ -33,7 +33,7 @@ public class BookingServiceIMPL implements BookingService {
     @Override
     public void saveBooking(BookingDTO bookingDTO) {
         BookingEntity booking =mapping.toBookingEntity(bookingDTO);
-        UserEntity user =userDAO.getReferenceById(bookingDTO.getUser());
+        UserEntity user =userDAO.getReferenceById(bookingDTO.getUserId());
         booking.setUser(user);
 
         List<TrainEntity>trainEntities =new ArrayList<>();
@@ -43,9 +43,6 @@ public class BookingServiceIMPL implements BookingService {
             }
         }
         booking.setTrains(trainEntities);
-        PaymentEntity payment =paymentDAO.getReferenceById(bookingDTO.getPaymentId());
-        booking.setPayment(payment);
-
         BookingEntity bookingEntity =bookingDAO.save(booking);
             if (bookingEntity==null){
                 System.out.println("something went wrong");

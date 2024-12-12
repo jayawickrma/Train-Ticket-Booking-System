@@ -14,8 +14,6 @@ public class BookingDTO implements SuperDTO {
     private String bookingId;
     private LocalDate bookingDate;
     private Double totalPrice;
-    private String user;
-    private List<String>trainList;
-    private String paymentId;
-
+    private String userId;
+    private List<String> trainList;
 }

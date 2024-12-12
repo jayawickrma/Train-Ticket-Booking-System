@@ -14,5 +14,5 @@ public class PaymentDTO implements SuperDTO {
     private LocalDateTime paymentDate;
     private Double amount;
     private String paymentStatus;
-    private String booking;
+    private String bookingId;
 }
