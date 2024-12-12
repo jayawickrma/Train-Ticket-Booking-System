@@ -1,7 +1,9 @@
 package com.example.trainticketbookingsystem.Controller;
 
+import com.example.trainticketbookingsystem.DTO.IMPL.BookingDTO;
 import com.example.trainticketbookingsystem.DTO.IMPL.TrainDTO;
 import com.example.trainticketbookingsystem.Exception.DataPersistException;
+import com.example.trainticketbookingsystem.Service.BookingService;
 import com.example.trainticketbookingsystem.Service.TrainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/trainBooking/train")
+@RequestMapping("api/trainBooking/booking")
 public class BookingController {
     @Autowired
-    private TrainService trainService;
+    private BookingService bookingService;
 
     @PostMapping
-    public ResponseEntity<Void>saveTrain(@RequestBody TrainDTO trainDTO){
+    public ResponseEntity<Void>saveBooking(@RequestBody BookingDTO bookingDTO){
         try {
-            trainService.saveTrain(trainDTO);
+            bookingService.saveBooking(bookingDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (DataPersistException e){
             e.printStackTrace();
