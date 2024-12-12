@@ -22,7 +22,7 @@ public class PaymentController {
     @PostMapping
     public ResponseEntity<Void>savePayment(@RequestBody PaymentDTO paymentDTO) {
         try {
-
+            System.out.println(paymentDTO);
             paymentService.savePayment(paymentDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (DataPersistException e){
