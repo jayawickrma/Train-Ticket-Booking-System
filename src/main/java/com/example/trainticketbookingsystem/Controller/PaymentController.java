@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("api/trainBooking/payment")
 public class PaymentController {
@@ -19,6 +22,7 @@ public class PaymentController {
     @PostMapping
     public ResponseEntity<Void>savePayment(@RequestBody PaymentDTO paymentDTO) {
         try {
+
             paymentService.savePayment(paymentDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (DataPersistException e){

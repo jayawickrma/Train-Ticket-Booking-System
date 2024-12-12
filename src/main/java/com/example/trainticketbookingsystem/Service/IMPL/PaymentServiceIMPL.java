@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 @Transactional
@@ -24,6 +25,7 @@ public class PaymentServiceIMPL implements PaymentService {
     @Override
     public void savePayment(PaymentDTO paymentDTO) {
         PaymentEntity payment =mapping.toPaymentEntity(paymentDTO);
+        payment.setPaymentDate(LocalDateTime.now());
         BookingEntity booking =bookingDAO.getReferenceById(paymentDTO.getBookingId());
         payment.setBooking(booking);
 
