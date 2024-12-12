@@ -33,9 +33,9 @@ public class TrainServiceIMPL implements TrainService {
 
         TrainEntity trainEntity =mapping.toTrainEntity(trainDTO);
         TrainEntity train =trainDAO.save(trainEntity);
-        if (train==null){
-            System.out.println("something went wrong");
-        }
+            if (train==null){
+                System.out.println("something went wrong");
+            }
 
     }
 
@@ -46,7 +46,7 @@ public class TrainServiceIMPL implements TrainService {
 
     @Override
     public void deleteTrain(String trainId) {
-
+        trainDAO.deleteById(trainId);
     }
 
     @Override
