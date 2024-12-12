@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserDAO extends JpaRepository<UserEntity,String> {
-    @Query(value = "SELECT * FROM user WHERE userId = (SELECT userId FROM crop ORDER BY CAST(SUBSTRING(userId, 6) AS UNSIGNED) DESC LIMIT 1);", nativeQuery = true)
+    @Query(value = "SELECT * FROM user WHERE user_id = (SELECT user_id FROM user ORDER BY CAST(SUBSTRING(user_id, 6) AS UNSIGNED) DESC LIMIT 1);", nativeQuery = true)
     UserEntity findLastRowNative();
 }
