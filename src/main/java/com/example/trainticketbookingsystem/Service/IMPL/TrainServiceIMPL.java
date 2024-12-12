@@ -3,6 +3,7 @@ package com.example.trainticketbookingsystem.Service.IMPL;
 import com.example.trainticketbookingsystem.Controller.BookingController;
 import com.example.trainticketbookingsystem.DAO.BookingDAO;
 import com.example.trainticketbookingsystem.DAO.ScheduleDAO;
+import com.example.trainticketbookingsystem.DAO.TrainDAO;
 import com.example.trainticketbookingsystem.DTO.IMPL.BookingDTO;
 import com.example.trainticketbookingsystem.DTO.IMPL.TrainDTO;
 import com.example.trainticketbookingsystem.Entity.IMPL.BookingEntity;
@@ -26,6 +27,8 @@ public class TrainServiceIMPL implements TrainService {
     private Mapping mapping;
     @Autowired
     private ScheduleDAO scheduleDAO;
+    @Autowired
+    private TrainDAO trainDAO;
     @Override
     public void saveTrain(TrainDTO trainDTO) {
 
@@ -46,6 +49,11 @@ public class TrainServiceIMPL implements TrainService {
             }
         }
         trainEntity.setSchedules(scheduleEntities);
+
+        TrainEntity train =trainDAO.save(trainEntity);
+        if (train==null){
+            System.out.println("something went wrong");
+        }
 
     }
 

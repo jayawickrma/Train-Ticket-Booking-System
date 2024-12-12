@@ -1,6 +1,8 @@
 package com.example.trainticketbookingsystem.Util;
 
+import com.example.trainticketbookingsystem.DTO.IMPL.BookingDTO;
 import com.example.trainticketbookingsystem.DTO.IMPL.TrainDTO;
+import com.example.trainticketbookingsystem.Entity.IMPL.BookingEntity;
 import com.example.trainticketbookingsystem.Entity.IMPL.TrainEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -22,5 +24,15 @@ public class Mapping {
     }
     public List<TrainDTO>asTrainDTOList(List<TrainEntity>trainEntities){
         return modelMapper.map(trainEntities,new TypeToken<List<TrainDTO>>(){}.getType());
+    }
+
+    public BookingEntity toBookingEntity(BookingDTO bookingDTO){
+        return modelMapper.map(bookingDTO, BookingEntity.class);
+    }
+    public BookingDTO toBookingDTO(BookingEntity booking){
+        return modelMapper.map(booking, BookingDTO.class);
+    }
+    public List<BookingDTO>asBookingDTOLIST(List<BookingEntity>bookingEntities){
+        return modelMapper.map(bookingEntities,new TypeToken<List<BookingDTO>>(){}.getType());
     }
 }
