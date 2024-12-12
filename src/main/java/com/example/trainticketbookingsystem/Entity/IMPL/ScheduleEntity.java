@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @Table(name = "Schedule")
 public class ScheduleEntity implements SuperEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String scheduleId;
 
     private LocalDateTime departureTime;

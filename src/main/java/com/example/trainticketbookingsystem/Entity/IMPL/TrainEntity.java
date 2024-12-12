@@ -16,9 +16,6 @@ import java.util.List;
 @Table(name = "Train")
 public class TrainEntity implements SuperEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String trainId;
-
     private String trainName;
     private String route;
     private int capacity;

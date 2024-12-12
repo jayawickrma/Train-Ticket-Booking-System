@@ -16,7 +16,6 @@ import java.util.List;
 @Table(name = "User")
 public class UserEntity implements SuperEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String userId;
 
     private String name;

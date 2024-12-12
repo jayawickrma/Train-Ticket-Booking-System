@@ -17,7 +17,6 @@ import java.util.List;
 @Table(name = "Booking")
 public class BookingEntity implements SuperEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String bookingId;
 
     private LocalDate bookingDate;

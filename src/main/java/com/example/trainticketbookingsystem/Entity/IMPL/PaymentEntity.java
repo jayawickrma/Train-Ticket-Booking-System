@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @Table(name = "Payment")
 public class PaymentEntity implements SuperEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String paymentId;
 
     private LocalDateTime paymentDate;
