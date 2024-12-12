@@ -16,7 +16,4 @@ public class TrainDTO implements SuperDTO {
     private String trainName;
     private String route;
     private int capacity;
-    private List<String>bookings;
-    private List<String>schedules;
-
 }

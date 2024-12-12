@@ -32,23 +32,6 @@ public class TrainServiceIMPL implements TrainService {
     public void saveTrain(TrainDTO trainDTO) {
 
         TrainEntity trainEntity =mapping.toTrainEntity(trainDTO);
-
-        List<BookingEntity>bookingEntities =new ArrayList<>();
-        for (String id : trainDTO.getBookings()){
-            if(bookingDAO.existsById(id)){
-                bookingEntities.add(bookingDAO.getReferenceById(id));
-            }
-        }
-        trainEntity.setBookings(bookingEntities);
-
-        List<ScheduleEntity>scheduleEntities =new ArrayList<>();
-        for (String id :trainDTO.getSchedules()){
-            if (scheduleDAO.existsById(id)){
-                scheduleEntities.add(scheduleDAO.getReferenceById(id));
-            }
-        }
-        trainEntity.setSchedules(scheduleEntities);
-
         TrainEntity train =trainDAO.save(trainEntity);
         if (train==null){
             System.out.println("something went wrong");

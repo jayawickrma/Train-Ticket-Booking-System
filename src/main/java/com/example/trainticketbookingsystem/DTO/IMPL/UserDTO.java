@@ -15,5 +15,4 @@ public class UserDTO implements SuperDTO {
     private String email;
     private String phoneNumber;
     private String password;
-    private List<String>bookings;
 }
