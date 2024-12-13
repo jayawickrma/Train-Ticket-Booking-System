@@ -1,6 +1,7 @@
 package com.example.trainticketbookingsystem.Config;
 
-import com.example.demo.Service.UserService;
+
+import com.example.trainticketbookingsystem.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
