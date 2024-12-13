@@ -1,5 +1,6 @@
 package com.example.trainticketbookingsystem.Entity.IMPL;
 
+import com.example.trainticketbookingsystem.Entity.Role;
 import com.example.trainticketbookingsystem.Entity.SuperEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -19,22 +21,23 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "User")
-public class UserEntity implements SuperEntity {
+public class UserEntity implements SuperEntity, UserDetails {
     @Id
-    @Column(unique = true)
     private String email;
-    private String phoneNumber;
     private String password;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 50)
+    private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<BookingEntity> bookings;
 
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        Set<GrantedAuthority> authorities =new HashSet<>();
-//        authorities.add(new SimpleGrantedAuthority("ROLE_"+role.name()));
-//        return authorities;
-//    }
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<GrantedAuthority> authorities =new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_"+role.name()));
+        return authorities;
+    }
 
     @Override
     public String getUsername() {

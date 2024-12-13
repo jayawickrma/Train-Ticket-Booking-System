@@ -1,6 +1,7 @@
 package com.example.trainticketbookingsystem.DTO.IMPL;
 
 import com.example.trainticketbookingsystem.DTO.SuperDTO;
+import com.example.trainticketbookingsystem.Entity.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;

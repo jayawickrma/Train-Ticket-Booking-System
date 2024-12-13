@@ -3,7 +3,7 @@ package com.example.trainticketbookingsystem.Service;
 import com.example.trainticketbookingsystem.DTO.IMPL.PasswordDto;
 import com.example.trainticketbookingsystem.Security.Responce.JWTAuthResponse;
 import com.example.trainticketbookingsystem.Security.Secure.SignIn;
-import com.example.trainticketbookingsystem.Security.Secure.SignUp;i
+import com.example.trainticketbookingsystem.Security.Secure.SignUp;
 
 public interface AuthenticationService {
     JWTAuthResponse signUp(SignUp signUp);

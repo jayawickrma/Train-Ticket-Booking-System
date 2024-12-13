@@ -66,10 +66,11 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
 
     @Override
     public void changePassword(PasswordDto passwordDto) {
-        Optional<UserEntity> byEmail =userDao.findByEmail(passwordDto.getEmail());
-        if (byEmail.isPresent()){
-            UserEntity userEntity=userDao.getReferenceById(byEmail.get().getUsername());
+        Optional<UserEntity> byEmail = userDao.findByEmail(passwordDto.getEmail());
+        if (byEmail.isPresent()) {
+            UserEntity userEntity = userDao.getReferenceById(byEmail.get().getUsername());
             userEntity.setPassword(passwordEncoder.encode(passwordDto.getNewPassword()));
             userDao.save(userEntity);
+        }
     }
 }
