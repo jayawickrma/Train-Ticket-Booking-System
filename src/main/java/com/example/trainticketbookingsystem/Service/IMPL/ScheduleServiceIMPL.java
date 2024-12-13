@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 @Transactional
@@ -41,12 +42,12 @@ public class ScheduleServiceIMPL implements ScheduleService {
 
     @Override
     public void getSchedule(String scheduleId) {
-
+        scheduleDAO.getReferenceById(scheduleId);
     }
 
     @Override
     public void deleteSchedule(String scheduleId) {
-
+            scheduleDAO.deleteById(scheduleId);
     }
 
     @Override
