@@ -23,7 +23,7 @@ public class BookingEntity implements SuperEntity {
     private Double totalPrice;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "User_email")
     private UserEntity user;
 
     @ManyToMany
