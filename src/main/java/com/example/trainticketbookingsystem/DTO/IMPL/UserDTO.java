@@ -2,7 +2,9 @@ package com.example.trainticketbookingsystem.DTO.IMPL;
 
 import com.example.trainticketbookingsystem.DTO.SuperDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,11 +12,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class UserDTO implements SuperDTO {
-    private String userId;
-    private String name;
+    @Id
     private String email;
-    private String phoneNumber;
-    @JsonIgnore
-    private List<Long> bookingIds;
+    private String password;
+    private Role role;
 }

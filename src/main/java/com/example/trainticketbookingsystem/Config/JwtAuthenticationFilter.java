@@ -1,7 +1,8 @@
 package com.example.trainticketbookingsystem.Config;
 
-import com.example.demo.Service.JWTService;
-import com.example.demo.Service.UserService;
+
+import com.example.trainticketbookingsystem.Service.JWTService;
+import com.example.trainticketbookingsystem.Service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

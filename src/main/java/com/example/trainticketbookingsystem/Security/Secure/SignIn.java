@@ -15,6 +15,8 @@ public class SignIn {
     @NotNull(message = "Email cannot be null")
     @Email
     private String email;
+    @NotNull(message = "cannot  be empty")
+    private String mobileNumber;
     @NotNull(message = "password cannot be null")
     private String password;
 }

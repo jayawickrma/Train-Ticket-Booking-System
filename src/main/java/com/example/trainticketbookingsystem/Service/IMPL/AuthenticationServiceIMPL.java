@@ -7,6 +7,7 @@ import com.example.trainticketbookingsystem.DTO.IMPL.UserDTO;
 import com.example.trainticketbookingsystem.Entity.IMPL.UserEntity;
 import com.example.trainticketbookingsystem.Exception.NotFoundException;
 import com.example.trainticketbookingsystem.Security.Responce.JWTAuthResponse;
+import com.example.trainticketbookingsystem.Security.Secure.SignIn;
 import com.example.trainticketbookingsystem.Security.Secure.SignUp;
 import com.example.trainticketbookingsystem.Service.AuthenticationService;
 
@@ -34,7 +35,6 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
         UserDTO userDTO =UserDTO.builder()
                 .email(signUp.getEmail())
                 .password(passwordEncoder.encode(signUp.getPassword()))
-                .role(signUp.getRole())
                 .build();
         UserEntity userEntity1 = mapping.toUserEntity(userDTO);
         System.out.println(userEntity1);
