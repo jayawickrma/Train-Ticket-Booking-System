@@ -6,9 +6,9 @@ import com.example.trainticketbookingsystem.DAO.TrainDAO;
 import com.example.trainticketbookingsystem.DAO.UserDAO;
 import com.example.trainticketbookingsystem.DTO.IMPL.BookingDTO;
 import com.example.trainticketbookingsystem.Entity.IMPL.BookingEntity;
-import com.example.trainticketbookingsystem.Entity.IMPL.PaymentEntity;
 import com.example.trainticketbookingsystem.Entity.IMPL.TrainEntity;
 import com.example.trainticketbookingsystem.Entity.IMPL.UserEntity;
+import com.example.trainticketbookingsystem.Exception.NotFoundException;
 import com.example.trainticketbookingsystem.Service.BookingService;
 import com.example.trainticketbookingsystem.Util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +57,19 @@ public class BookingServiceIMPL implements BookingService {
 
     @Override
     public void deleteBooking(String bookingId) {
+        if(bookingDAO.existsById(bookingId)){
+            BookingEntity booking =bookingDAO.getReferenceById(bookingId);
+            List<TrainEntity>trainEntities =booking.getTrains();
 
+            for (TrainEntity train :trainEntities){
+                List<BookingEntity>bookingEntities =train.getBookings();
+                bookingEntities.remove(booking);
+            }
+            booking.getTrains().clear();
+            bookingDAO.delete(booking);
+        }else {
+            new NotFoundException("you enterd id not match");
+        }
     }
 
     @Override

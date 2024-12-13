@@ -20,7 +20,7 @@ public class PaymentEntity implements SuperEntity {
     private Double amount;
     private String paymentStatus;
 
-    @OneToOne(mappedBy = "payment")
+    @OneToOne(mappedBy = "payment",cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private BookingEntity booking;
 
 }
