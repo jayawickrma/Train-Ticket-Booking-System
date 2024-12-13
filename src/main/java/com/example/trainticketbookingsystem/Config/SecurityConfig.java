@@ -50,7 +50,7 @@ public class SecurityConfig {
         http
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(req->req.requestMatchers("api/v1/auth/**")
+                .authorizeHttpRequests(req->req.requestMatchers("api/trainBooking/auth/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
