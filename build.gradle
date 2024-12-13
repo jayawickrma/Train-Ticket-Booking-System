@@ -37,6 +37,16 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.3.5'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
+    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.12.6'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.12.6'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.12.6'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.3.0'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 }
 

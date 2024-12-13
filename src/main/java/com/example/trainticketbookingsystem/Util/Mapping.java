@@ -1,13 +1,7 @@
 package com.example.trainticketbookingsystem.Util;
 
-import com.example.trainticketbookingsystem.DTO.IMPL.BookingDTO;
-import com.example.trainticketbookingsystem.DTO.IMPL.PaymentDTO;
-import com.example.trainticketbookingsystem.DTO.IMPL.ScheduleDTO;
-import com.example.trainticketbookingsystem.DTO.IMPL.TrainDTO;
-import com.example.trainticketbookingsystem.Entity.IMPL.BookingEntity;
-import com.example.trainticketbookingsystem.Entity.IMPL.PaymentEntity;
-import com.example.trainticketbookingsystem.Entity.IMPL.ScheduleEntity;
-import com.example.trainticketbookingsystem.Entity.IMPL.TrainEntity;
+import com.example.trainticketbookingsystem.DTO.IMPL.*;
+import com.example.trainticketbookingsystem.Entity.IMPL.*;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +34,19 @@ public class Mapping {
     public List<BookingDTO>asBookingDTOLIST(List<BookingEntity>bookingEntities){
         return modelMapper.map(bookingEntities,new TypeToken<List<BookingDTO>>(){}.getType());
     }
+
+
+    public UserEntity toUserEntity(UserDTO userDTO){
+        return modelMapper.map(userDTO, UserEntity.class);
+    }
+    public UserDTO toUserDTO(UserEntity userEntity){
+        return modelMapper.map(userEntity, UserDTO.class);
+    }
+    public List<UserDTO> asUserDTOList(List<UserEntity> userEntities) {
+        return modelMapper.map(userEntities, new TypeToken<List<UserDTO>>() {}.getType());
+    }
+
+
 
     public ScheduleEntity toScheduleEntity(ScheduleDTO scheduleDTO){
         return modelMapper.map(scheduleDTO, ScheduleEntity.class);
