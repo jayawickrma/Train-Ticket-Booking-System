@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class Mapping {
@@ -26,7 +27,7 @@ public class Mapping {
     public TrainDTO toTrainDTO(TrainEntity trainEntity){
         return modelMapper.map(trainEntity, TrainDTO.class);
     }
-    public List<TrainDTO>asTrainDTOList(List<TrainEntity>trainEntities){
+    public TrainDTO asTrainDTOList(Optional<TrainEntity> trainEntities){
         return modelMapper.map(trainEntities,new TypeToken<List<TrainDTO>>(){}.getType());
     }
 

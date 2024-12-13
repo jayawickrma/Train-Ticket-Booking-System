@@ -8,6 +8,6 @@ public interface TrainService {
     void saveTrain(TrainDTO trainDTO);
     List<TrainDTO>getAllTrains();
     void deleteTrain(String trainId);
-    void getTrain(String trainId);
+    TrainDTO getTrain(String trainId);
     void updateTrain(TrainDTO trainDTO,String trainId);
 }

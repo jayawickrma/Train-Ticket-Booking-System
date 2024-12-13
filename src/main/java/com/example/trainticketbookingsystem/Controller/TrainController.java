@@ -1,14 +1,9 @@
 package com.example.trainticketbookingsystem.Controller;
-
-import com.example.trainticketbookingsystem.DAO.TrainDAO;
 import com.example.trainticketbookingsystem.DTO.IMPL.TrainDTO;
 import com.example.trainticketbookingsystem.Exception.DataPersistException;
 import com.example.trainticketbookingsystem.Service.TrainService;
-import com.example.trainticketbookingsystem.Util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,5 +39,4 @@ public class TrainController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 }
