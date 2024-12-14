@@ -1,8 +1,6 @@
 package com.example.trainticketbookingsystem.Service.IMPL;
 
-import com.example.trainticketbookingsystem.Config.SecurityConfig;
 import com.example.trainticketbookingsystem.DAO.BookingDAO;
-import com.example.trainticketbookingsystem.DAO.PaymentDAO;
 import com.example.trainticketbookingsystem.DAO.TrainDAO;
 import com.example.trainticketbookingsystem.DAO.UserDAO;
 import com.example.trainticketbookingsystem.DTO.IMPL.BookingDTO;
@@ -10,8 +8,8 @@ import com.example.trainticketbookingsystem.Entity.IMPL.BookingEntity;
 import com.example.trainticketbookingsystem.Entity.IMPL.TrainEntity;
 import com.example.trainticketbookingsystem.Entity.IMPL.UserEntity;
 import com.example.trainticketbookingsystem.Exception.NotFoundException;
-import com.example.trainticketbookingsystem.Security.Secure.SignIn;
 import com.example.trainticketbookingsystem.Service.BookingService;
+import com.example.trainticketbookingsystem.Util.EmailService;
 import com.example.trainticketbookingsystem.Util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +23,7 @@ import java.util.Optional;
 @Transactional
 public class BookingServiceIMPL implements BookingService {
     @Autowired
-    private AuthenticationServiceIMPL authenticationServiceIMPL;
+    private EmailService emailService;
     @Autowired
     private TrainDAO trainDAO;
     @Autowired
@@ -51,18 +49,13 @@ public class BookingServiceIMPL implements BookingService {
         booking.setTrains(trainEntities);
         BookingEntity bookingEntity =bookingDAO.save(booking);
 
+
             if (bookingEntity==null){
                 System.out.println("something went wrong");
             }
 
     }
-    private void sendBookingConfirmationEmail(BookingEntity booking) {
-        UserEntity userEmail = booking.getUser(); // Ensure this holds the signed-in user's email
-        String subject = "Booking Confirmation";
-        String body = String.format("Dear user,\n\nYour booking with ID %d has been successfully created.\n\nDetails:\n%s\n\nThank you for using our service!",
-                booking.getUser(), booking.getBookingDetails());
-        emailService.sendEmail(userEmail, subject, body);
-    }
+
 
     @Override
     public List<BookingDTO> getAllBookings() {
