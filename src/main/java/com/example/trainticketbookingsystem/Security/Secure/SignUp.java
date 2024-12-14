@@ -15,10 +15,9 @@ import lombok.NoArgsConstructor;
 public class SignUp {
     @NotNull(message = "email cannot be null")
     private String email;
+    @NotNull(message = "weak password")
+    private String password;
     @NotNull
     private Role role;
-
-    @NotNull
-    private String password;
 
 }
