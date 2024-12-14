@@ -43,7 +43,7 @@ Follow these steps to set up and run the project locally:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/train-ticket-booking-system.git
+   git clone https://github.com/jayawickrma/Train-Ticket-Booking-System.git
    cd train-ticket-booking-system
    ```
 
@@ -51,7 +51,7 @@ Follow these steps to set up and run the project locally:
    - Create a MySQL database, e.g., `train_booking`.
    - Update the database configuration in `application.properties`:
      ```properties
-     spring.datasource.url=jdbc:mysql://localhost:3306/train_booking
+     spring.datasource.url=jdbc:mysql://localhost:3306/trainBooking
      spring.datasource.username=your-username
      spring.datasource.password=your-password
      spring.jpa.hibernate.ddl-auto=update
