@@ -3,7 +3,6 @@ package com.example.trainticketbookingsystem.Controller;
 import com.example.trainticketbookingsystem.DTO.IMPL.ScheduleDTO;
 import com.example.trainticketbookingsystem.Exception.DataPersistException;
 import com.example.trainticketbookingsystem.Service.ScheduleService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
