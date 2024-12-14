@@ -27,14 +27,11 @@ public class UserEntity implements SuperEntity, UserDetails {
     @Enumerated(EnumType.STRING)
     @Column(length = 50)
     private Role role;
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<BookingEntity> bookings;
-
-    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<GrantedAuthority> authorities =new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE-"+role.name()));
+        Set<GrantedAuthority>authorities =new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_"+role.name()));
         return authorities;
     }
 
@@ -66,5 +63,4 @@ public class UserEntity implements SuperEntity, UserDetails {
     public String getPassword(){
         return password;
     }
-
 }

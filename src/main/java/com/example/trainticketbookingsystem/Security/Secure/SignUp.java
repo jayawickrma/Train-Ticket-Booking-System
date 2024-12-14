@@ -17,7 +17,7 @@ public class SignUp {
     private String email;
     @NotNull(message = "weak password")
     private String password;
-    @NotNull
+    @NotNull(message = "select your role")
     private Role role;
 
 }
