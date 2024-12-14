@@ -50,10 +50,18 @@ public class BookingServiceIMPL implements BookingService {
         }
         booking.setTrains(trainEntities);
         BookingEntity bookingEntity =bookingDAO.save(booking);
+
             if (bookingEntity==null){
                 System.out.println("something went wrong");
             }
 
+    }
+    private void sendBookingConfirmationEmail(BookingEntity booking) {
+        UserEntity userEmail = booking.getUser(); // Ensure this holds the signed-in user's email
+        String subject = "Booking Confirmation";
+        String body = String.format("Dear user,\n\nYour booking with ID %d has been successfully created.\n\nDetails:\n%s\n\nThank you for using our service!",
+                booking.getUser(), booking.getBookingDetails());
+        emailService.sendEmail(userEmail, subject, body);
     }
 
     @Override
