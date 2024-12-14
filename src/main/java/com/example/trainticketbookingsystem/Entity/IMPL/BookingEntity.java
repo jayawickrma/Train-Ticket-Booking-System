@@ -18,9 +18,8 @@ import java.util.List;
 public class BookingEntity implements SuperEntity {
     @Id
     private String bookingId;
-
     private LocalDate bookingDate;
-    private Double totalPrice;
+    private int seats;
 
     @ManyToOne
     @JoinColumn(name = "User_email")

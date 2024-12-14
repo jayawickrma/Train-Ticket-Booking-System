@@ -13,7 +13,7 @@ import java.util.List;
 public class BookingDTO implements SuperDTO {
     private String bookingId;
     private LocalDate bookingDate;
-    private Double totalPrice;
+    private int seats;
     private String userId;
     private List<String> trainList;
 }
