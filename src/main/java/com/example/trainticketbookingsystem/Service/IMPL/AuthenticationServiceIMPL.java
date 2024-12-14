@@ -35,6 +35,7 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
         UserDTO userDTO =UserDTO.builder()
                 .email(signUp.getEmail())
                 .password(passwordEncoder.encode(signUp.getPassword()))
+                .role(signUp.getRole())
                 .build();
         UserEntity userEntity1 = mapping.toUserEntity(userDTO);
         System.out.println(userEntity1);
