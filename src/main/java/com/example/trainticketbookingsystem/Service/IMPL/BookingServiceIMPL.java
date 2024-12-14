@@ -1,5 +1,6 @@
 package com.example.trainticketbookingsystem.Service.IMPL;
 
+import com.example.trainticketbookingsystem.Config.SecurityConfig;
 import com.example.trainticketbookingsystem.DAO.BookingDAO;
 import com.example.trainticketbookingsystem.DAO.PaymentDAO;
 import com.example.trainticketbookingsystem.DAO.TrainDAO;
@@ -9,6 +10,7 @@ import com.example.trainticketbookingsystem.Entity.IMPL.BookingEntity;
 import com.example.trainticketbookingsystem.Entity.IMPL.TrainEntity;
 import com.example.trainticketbookingsystem.Entity.IMPL.UserEntity;
 import com.example.trainticketbookingsystem.Exception.NotFoundException;
+import com.example.trainticketbookingsystem.Security.Secure.SignIn;
 import com.example.trainticketbookingsystem.Service.BookingService;
 import com.example.trainticketbookingsystem.Util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,24 +19,28 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 public class BookingServiceIMPL implements BookingService {
     @Autowired
-    private UserDAO userDAO;
+    private AuthenticationServiceIMPL authenticationServiceIMPL;
     @Autowired
     private TrainDAO trainDAO;
-    @Autowired
-    private PaymentDAO paymentDAO;
     @Autowired
     private Mapping mapping;
     @Autowired
     private BookingDAO bookingDAO;
+    @Autowired
+    private UserDAO userDAO;
+
     @Override
     public void saveBooking(BookingDTO bookingDTO) {
         BookingEntity booking =mapping.toBookingEntity(bookingDTO);
-        UserEntity user =userDAO.getReferenceById(bookingDTO.getUserId());
-        booking.setUser(user);
+        Optional<UserEntity> byEmail = userDAO.findByEmail(bookingDTO.getUserId());
+
+        byEmail.ifPresent(booking::setUser);
 
         List<TrainEntity>trainEntities =new ArrayList<>();
         for (String id :bookingDTO.getTrainList()){

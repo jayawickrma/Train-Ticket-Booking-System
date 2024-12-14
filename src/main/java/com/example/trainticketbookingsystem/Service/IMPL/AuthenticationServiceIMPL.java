@@ -17,6 +17,8 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -73,5 +75,12 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
             userEntity.setPassword(passwordEncoder.encode(passwordDto.getNewPassword()));
             userDao.save(userEntity);
         }
+    }
+    public String getSignedInUserEmail() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            return authentication.getName(); // Returns the email or username (based on your principal configuration)
+        }
+        throw new IllegalStateException("No authenticated user found");
     }
 }

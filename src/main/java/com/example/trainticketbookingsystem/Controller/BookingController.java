@@ -1,9 +1,11 @@
 package com.example.trainticketbookingsystem.Controller;
 
+import com.example.trainticketbookingsystem.Config.SecurityConfig;
 import com.example.trainticketbookingsystem.DTO.IMPL.BookingDTO;
 import com.example.trainticketbookingsystem.DTO.IMPL.TrainDTO;
 import com.example.trainticketbookingsystem.Exception.DataPersistException;
 import com.example.trainticketbookingsystem.Service.BookingService;
+import com.example.trainticketbookingsystem.Service.IMPL.AuthenticationServiceIMPL;
 import com.example.trainticketbookingsystem.Service.TrainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,10 +17,15 @@ import org.springframework.web.bind.annotation.*;
 public class BookingController {
     @Autowired
     private BookingService bookingService;
+    @Autowired
+    private AuthenticationServiceIMPL authenticationServiceIMPL;
 
     @PostMapping
     public ResponseEntity<Void>saveBooking(@RequestBody BookingDTO bookingDTO){
         try {
+            String UserEmail = authenticationServiceIMPL.getSignedInUserEmail();
+            System.out.println("Signed In User = "+UserEmail);
+            bookingDTO.setUserId(UserEmail);
             bookingService.saveBooking(bookingDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (DataPersistException e){
