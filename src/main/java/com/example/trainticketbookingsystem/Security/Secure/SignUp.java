@@ -1,6 +1,7 @@
 package com.example.trainticketbookingsystem.Security.Secure;
 
 
+import com.example.trainticketbookingsystem.Entity.Role;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +16,7 @@ public class SignUp {
     @NotNull(message = "email cannot be null")
     private String email;
     @NotNull
-    private String mobileNumber;
+    private Role role;
 
     @NotNull
     private String password;

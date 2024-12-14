@@ -17,5 +17,5 @@ public class UserDTO implements SuperDTO {
     @Id
     private String email;
     private String password;
-    private String role;
+    private Role role;
 }

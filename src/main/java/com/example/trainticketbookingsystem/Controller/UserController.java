@@ -22,6 +22,7 @@ public class UserController {
     }
     @PostMapping("/signUp")
     public ResponseEntity<JWTAuthResponse> saveUser(@RequestBody SignUp signUp){
+        System.out.println(signUp);
         return ResponseEntity.ok(authenticationService.signUp(signUp));
     }
 }
