@@ -98,10 +98,13 @@ Follow these steps to set up and run the project locally:
 ## Project Structure
 ```
 src/main/java/com/example/trainticketbookingsystem/
+├── Config/           #Security Configurations
 ├── Controller/       # REST controllers
+├── DAO/              # Data Access Objects extended by JpaRepository(Spring Data JPA repositories)
 ├── DTO/              # Data transfer objects
+├── Exception         # Exceptions
 ├── Entity/           # Entity classes for JPA
-├── Repository/       # Spring Data JPA repositories
+├── Security  /       # Security Options
 ├── Service/          # Business logic
 └── Application.java  # Main Spring Boot application
 ```
