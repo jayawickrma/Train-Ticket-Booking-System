@@ -35,7 +35,7 @@ public class UserEntity implements SuperEntity, UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities =new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_"+role.name()));
+        authorities.add(new SimpleGrantedAuthority("ROLE-"+role.name()));
         return authorities;
     }
 
