@@ -9,7 +9,6 @@ import com.example.trainticketbookingsystem.Entity.IMPL.TrainEntity;
 import com.example.trainticketbookingsystem.Entity.IMPL.UserEntity;
 import com.example.trainticketbookingsystem.Exception.NotFoundException;
 import com.example.trainticketbookingsystem.Service.BookingService;
-import com.example.trainticketbookingsystem.Util.EmailService;
 import com.example.trainticketbookingsystem.Util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +21,7 @@ import java.util.Optional;
 @Service
 @Transactional
 public class BookingServiceIMPL implements BookingService {
-    @Autowired
-    private EmailService emailService;
+
     @Autowired
     private TrainDAO trainDAO;
     @Autowired
