@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 @Data
 public class ScheduleDTO implements SuperDTO {
     private String scheduleId;
-    private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
+    private LocalDateTime departureTime;
     private LocalDate date;
 
     private String trainId;
