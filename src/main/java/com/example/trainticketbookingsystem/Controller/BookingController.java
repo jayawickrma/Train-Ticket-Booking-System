@@ -9,6 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("api/trainBooking/booking")
 public class BookingController {
@@ -20,8 +23,8 @@ public class BookingController {
     @PostMapping
     public ResponseEntity<Void>saveBooking(@RequestBody BookingDTO bookingDTO){
         try {
+            bookingDTO.setBookingDate(LocalDate.now());
             String UserEmail = authenticationServiceIMPL.getSignedInUserEmail();
-            System.out.println("Signed In User = "+UserEmail);
             bookingDTO.setUserId(UserEmail);
             bookingService.saveBooking(bookingDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
