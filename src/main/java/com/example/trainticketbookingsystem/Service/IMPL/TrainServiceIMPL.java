@@ -4,6 +4,7 @@ import com.example.trainticketbookingsystem.DAO.BookingDAO;
 import com.example.trainticketbookingsystem.DAO.ScheduleDAO;
 import com.example.trainticketbookingsystem.DAO.TrainDAO;
 import com.example.trainticketbookingsystem.DTO.IMPL.TrainDTO;
+import com.example.trainticketbookingsystem.Entity.IMPL.BookingEntity;
 import com.example.trainticketbookingsystem.Entity.IMPL.ScheduleEntity;
 import com.example.trainticketbookingsystem.Entity.IMPL.TrainEntity;
 import com.example.trainticketbookingsystem.Service.TrainService;
@@ -63,6 +64,23 @@ public class TrainServiceIMPL implements TrainService {
 
     @Override
     public void updateTrain(TrainDTO trainDTO, String trainId) {
+        Optional<TrainEntity>train =trainDAO.findById(trainId);
+        if (train.isPresent()){
+            train.get().setTrainName(trainDTO.getTrainName());
+            train.get().setRoute(trainDTO.getRoute());
+            train.get().setCapacity(trainDTO.getCapacity());
+            List<ScheduleEntity>scheduleEntities =new ArrayList<>();
+            List<BookingEntity>bookingEntities =new ArrayList<>();
 
+            for (String sid :trainDTO.getScheduleIds()){
+                scheduleEntities.add(scheduleDAO.getReferenceById(sid));
+            }
+            train.get().setSchedules(scheduleEntities);
+
+            for (String bid :trainDTO.getBookingIds()){
+                bookingEntities.add(bookingDAO.getReferenceById(bid));
+            }
+            train.get().setBookings(bookingEntities);
+        }
     }
 }
