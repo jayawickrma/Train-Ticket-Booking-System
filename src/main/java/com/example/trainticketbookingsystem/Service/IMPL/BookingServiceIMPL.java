@@ -85,6 +85,15 @@ public class BookingServiceIMPL implements BookingService {
 
     @Override
     public void updateBooking(BookingDTO bookingDTO, String bookingId) {
-
+        Optional<BookingEntity>bookingEntity=bookingDAO.findById(bookingId);
+        if (bookingEntity.isPresent()){
+            bookingEntity.get().setBookingDate(bookingDTO.getBookingDate());
+            bookingEntity.get().setSeats(bookingDTO.getSeats());
+            List<TrainEntity>trainEntities =new ArrayList<>();
+            for (String id :bookingDTO.getTrainList()){
+                trainEntities.add(trainDAO.getReferenceById(id));
+            }
+            bookingEntity.get().setTrains(trainEntities);
+        }
     }
 }
