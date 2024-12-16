@@ -8,6 +8,6 @@ public interface PaymentService {
     void savePayment(PaymentDTO paymentDTO);
     void deletePayment(String paymentId);
     List<PaymentDTO> getAllPayment();
-    void getPayment(String paymentId);
+    PaymentDTO getPayment(String paymentId);
     void UpdatePayment(PaymentDTO paymentDTO ,String paymentId);
 }

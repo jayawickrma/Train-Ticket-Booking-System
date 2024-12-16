@@ -78,8 +78,9 @@ public class BookingServiceIMPL implements BookingService {
     }
 
     @Override
-    public void getBooking(String bookingId) {
-
+    public BookingDTO getBooking(String bookingId) {
+            BookingEntity booking =bookingDAO.getReferenceById(bookingId);
+            return mapping.toBookingDTO(booking);
     }
 
     @Override

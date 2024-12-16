@@ -57,7 +57,8 @@ public class TrainServiceIMPL implements TrainService {
     }
     @Override
     public TrainDTO getTrain(String trainId) {
-        return null;
+        TrainEntity train =trainDAO.getReferenceById(trainId);
+        return mapping.toTrainDTO(train);
     }
 
     @Override

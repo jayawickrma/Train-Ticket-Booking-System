@@ -9,6 +9,6 @@ public interface BookingService {
     void saveBooking(BookingDTO bookingDTO);
     List<BookingDTO> getAllBookings();
     void deleteBooking(String bookingId);
-    void getBooking(String bookingId);
+    BookingDTO getBooking(String bookingId);
     void updateBooking(BookingDTO bookingDTO ,String bookingId);
 }

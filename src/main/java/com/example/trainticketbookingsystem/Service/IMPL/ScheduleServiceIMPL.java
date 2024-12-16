@@ -41,8 +41,9 @@ public class ScheduleServiceIMPL implements ScheduleService {
     }
 
     @Override
-    public void getSchedule(String scheduleId) {
-        scheduleDAO.getReferenceById(scheduleId);
+    public ScheduleDTO getSchedule(String scheduleId) {
+        ScheduleEntity schedule =scheduleDAO.getReferenceById(scheduleId);
+        return mapping.toScheduleDTO(schedule);
     }
 
     @Override
