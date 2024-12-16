@@ -24,10 +24,12 @@ public class ScheduleServiceIMPL implements ScheduleService {
     public void saveSchedule(ScheduleDTO scheduleDTO) {
 
         ScheduleEntity scheduleEntity =mapping.toScheduleEntity(scheduleDTO);
-        TrainEntity train =trainDAO.getReferenceById(scheduleDTO.getTrainId());
-        scheduleEntity.setTrain(train);
+      if (trainDAO.existsById(scheduleDTO.getTrainId())){
+          TrainEntity train =trainDAO.getReferenceById(scheduleDTO.getTrainId());
+          scheduleEntity.setTrain(train);
+        }
 
-        ScheduleEntity schedule =scheduleDAO.save(scheduleEntity);
+      ScheduleEntity schedule =scheduleDAO.save(scheduleEntity);
         if (schedule==null){
             System.out.println("something went wrong");
         }
