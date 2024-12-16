@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 public class PaymentServiceIMPL implements PaymentService {
@@ -21,6 +24,7 @@ public class PaymentServiceIMPL implements PaymentService {
     private BookingDAO bookingDAO;
     @Autowired
     private Mapping mapping;
+
     @Override
     public void savePayment(PaymentDTO paymentDTO) {
         PaymentEntity payment =mapping.toPaymentEntity(paymentDTO);
@@ -52,6 +56,9 @@ public class PaymentServiceIMPL implements PaymentService {
 
     @Override
     public void UpdatePayment(PaymentDTO paymentDTO, String paymentId) {
+        Optional<PaymentEntity>payment =paymentDAO.findById(paymentId);
+        if (payment.isPresent()){
 
+        }
     }
 }
