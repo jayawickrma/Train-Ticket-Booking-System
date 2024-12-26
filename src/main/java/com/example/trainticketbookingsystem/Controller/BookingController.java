@@ -23,7 +23,6 @@ public class BookingController {
     @PostMapping
     public ResponseEntity<Void>saveBooking(@RequestBody BookingDTO bookingDTO){
         try {
-            bookingDTO.setBookingDate(LocalDate.now());
             String UserEmail = authenticationServiceIMPL.getSignedInUserEmail();
             bookingDTO.setUserId(UserEmail);
             bookingService.saveBooking(bookingDTO);
