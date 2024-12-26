@@ -48,4 +48,17 @@ public class BookingController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @PutMapping(value = "/{bookingId}")
+    public ResponseEntity<Void>updateBooking(@PathVariable("bookingId")String bookingId, @RequestBody BookingDTO booking){
+        try{
+            bookingService.updateBooking(booking, bookingId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (DataPersistException e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+    }
 }
