@@ -12,7 +12,11 @@ import java.util.List;
 @Data
 public class BookingDTO implements SuperDTO {
     private String bookingId;
-    private LocalDate bookingDate;
+    private LocalDate bookedDate;
+    private LocalDate travelDate;
+    private String from;
+    private String to;
+    private String passengerClass;
     private int seats;
     private String userId;
     private List<String> trainList;
