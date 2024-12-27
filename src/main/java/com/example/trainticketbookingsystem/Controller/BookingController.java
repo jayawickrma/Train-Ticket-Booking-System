@@ -9,8 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.List;
+
 
 @RestController
 @RequestMapping("api/trainBooking/booking")
@@ -60,5 +60,13 @@ public class BookingController {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    @GetMapping(value ="/{bookingId}")
+    public BookingDTO bookingDTOList(@PathVariable("bookingId")String bookingId){
+         return bookingService.getBooking(bookingId);
+    }
+    @GetMapping
+    public List<BookingDTO> bookingDTOList(){
+        return bookingService.getAllBookings();
     }
 }
