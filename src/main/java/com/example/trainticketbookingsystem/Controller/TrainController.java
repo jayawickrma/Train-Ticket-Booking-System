@@ -39,4 +39,17 @@ public class TrainController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @PutMapping(value = "/{trainId}")
+    public ResponseEntity<Void>updateTrain(@PathVariable("trainId")String trainId,@RequestBody TrainDTO trainDTO){
+        try{
+            trainService.updateTrain(trainDTO,trainId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (DataPersistException e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
