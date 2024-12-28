@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +34,7 @@ public class BookingServiceIMPL implements BookingService {
 
     @Override
     public void saveBooking(BookingDTO bookingDTO) {
+        bookingDTO.setBookedDate(LocalDate.now());
         BookingEntity booking =mapping.toBookingEntity(bookingDTO);
         Optional<UserEntity> byEmail = userDAO.findByEmail(bookingDTO.getUserId());
 

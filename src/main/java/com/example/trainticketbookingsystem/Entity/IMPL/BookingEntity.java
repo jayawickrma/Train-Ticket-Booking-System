@@ -17,11 +17,7 @@ import java.util.List;
 public class BookingEntity implements SuperEntity {
     @Id
     private String bookingId;
-    private LocalDate bookedDate;
-    private LocalDate travelDate;
-    private String from;
-    private String to;
-    private String passengerClass;
+    private LocalDate bookingDate;
     private int seats;
 
     @ManyToOne

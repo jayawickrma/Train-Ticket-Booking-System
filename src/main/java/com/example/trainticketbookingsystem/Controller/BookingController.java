@@ -20,6 +20,7 @@ public class BookingController {
     @Autowired
     private AuthenticationServiceIMPL authenticationServiceIMPL;
 
+
     @PostMapping
     public ResponseEntity<Void>saveBooking(@RequestBody BookingDTO bookingDTO){
         try {
