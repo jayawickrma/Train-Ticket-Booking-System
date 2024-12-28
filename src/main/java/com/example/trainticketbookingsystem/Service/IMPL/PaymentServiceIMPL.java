@@ -39,7 +39,7 @@ public class PaymentServiceIMPL implements PaymentService {
 
     @Override
     public void deletePayment(String paymentId) {
-            paymentDAO.deleteById(paymentId);
+        paymentDAO.deleteById(paymentId);
     }
 
     @Override
