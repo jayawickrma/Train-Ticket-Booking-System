@@ -10,7 +10,12 @@ import com.example.trainticketbookingsystem.Util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.crypto.spec.OAEPParameterSpec;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 public class ScheduleServiceIMPL implements ScheduleService {
@@ -53,6 +58,11 @@ public class ScheduleServiceIMPL implements ScheduleService {
 
     @Override
     public void updateSchedule(ScheduleDTO scheduleDTO, String scheduleId) {
-
+        Optional<ScheduleEntity>scheduleEntity =scheduleDAO.findById(scheduleId);
+        if (scheduleEntity.isPresent()){
+            scheduleEntity.get().setTrain(trainDAO.getReferenceById(scheduleDTO.getTrainId()));
+            scheduleEntity.get().setArrivalTime(scheduleDTO.getArrivalTime());
+            scheduleEntity.get().setDepartureTime(scheduleDTO.getDepartureTime());
+        }
     }
 }

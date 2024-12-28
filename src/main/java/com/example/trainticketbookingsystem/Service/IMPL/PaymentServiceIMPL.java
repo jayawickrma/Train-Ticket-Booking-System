@@ -57,7 +57,7 @@ public class PaymentServiceIMPL implements PaymentService {
     public void UpdatePayment(PaymentDTO paymentDTO, String paymentId) {
         Optional<PaymentEntity>payment =paymentDAO.findById(paymentId);
         if (payment.isPresent()){
-
+            payment.get().setAmount(paymentDTO.getAmount());
         }
     }
 }
