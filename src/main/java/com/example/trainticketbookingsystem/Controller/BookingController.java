@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -26,6 +27,7 @@ public class BookingController {
         try {
             String UserEmail = authenticationServiceIMPL.getSignedInUserEmail();
             bookingDTO.setUserId(UserEmail);
+            bookingDTO.setBookedDate(LocalDate.now());
             bookingService.saveBooking(bookingDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (DataPersistException e){

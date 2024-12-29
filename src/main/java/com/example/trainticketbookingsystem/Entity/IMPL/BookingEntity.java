@@ -17,7 +17,9 @@ import java.util.List;
 public class BookingEntity implements SuperEntity {
     @Id
     private String bookingId;
-    private LocalDate bookingDate;
+
+    private LocalDate bookedDate;
+
     private int seats;
 
     @ManyToOne
@@ -35,4 +37,9 @@ public class BookingEntity implements SuperEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "payment_id", referencedColumnName = "paymentId")
     private PaymentEntity payment;
+
+//    private String from;
+//    private String to;
+//    private String passengerClass;
+//    private String travelDate;
 }

@@ -31,7 +31,7 @@ public class Mapping {
     public BookingDTO toBookingDTO(BookingEntity booking){
         return modelMapper.map(booking, BookingDTO.class);
     }
-    public List<BookingDTO>asBookingDTOLIST(List<BookingEntity>bookingEntities){
+    public BookingDTO asBookingDTOLIST(List<BookingEntity>bookingEntities){
         return modelMapper.map(bookingEntities,new TypeToken<List<BookingDTO>>(){}.getType());
     }
 
