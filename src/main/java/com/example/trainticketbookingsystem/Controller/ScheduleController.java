@@ -54,7 +54,10 @@ public class ScheduleController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    @GetMapping(value = "/{scheduleId}")
+    public ScheduleDTO getSchedule(@PathVariable("scheduleId")String scheduleId){
+        return scheduleService.getSchedule(scheduleId);
+    }
 
 
 }

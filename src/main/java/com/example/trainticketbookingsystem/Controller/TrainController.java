@@ -52,4 +52,5 @@ public class TrainController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @GetMapping()
 }
