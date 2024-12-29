@@ -65,7 +65,7 @@ public class BookingController {
         }
     }
     @GetMapping(value ="/{bookingId}")
-    public BookingDTO bookingDTOList(@PathVariable("bookingId")String bookingId){
+    public BookingDTO getBooking(@PathVariable("bookingId")String bookingId){
          return bookingService.getBooking(bookingId);
     }
     @GetMapping

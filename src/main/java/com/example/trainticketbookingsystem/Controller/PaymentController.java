@@ -43,4 +43,21 @@ public class PaymentController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @PutMapping(value = "/{paymentId}")
+    public ResponseEntity<Void>updatePayment(@PathVariable("paymentId")String paymentId,@RequestBody PaymentDTO paymentDTO){
+        try {
+            paymentService.UpdatePayment(paymentDTO,paymentId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (DataPersistException e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @GetMapping(value = "/{paymentId}")
+    public PaymentDTO getPayment(@PathVariable("paymentId")String paymentId){
+             return paymentService.getPayment(paymentId);
+    }
 }
