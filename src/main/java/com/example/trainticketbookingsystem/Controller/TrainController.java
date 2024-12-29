@@ -52,5 +52,8 @@ public class TrainController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @GetMapping()
+    @GetMapping(value = "/{trainId}")
+    public TrainDTO getTrain(@PathVariable("trainId")String trainId) {
+        return trainService.getTrain(trainId);
+    }
 }
