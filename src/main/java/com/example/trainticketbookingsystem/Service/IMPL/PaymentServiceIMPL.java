@@ -39,7 +39,11 @@ public class PaymentServiceIMPL implements PaymentService {
 
     @Override
     public void deletePayment(String paymentId) {
-        paymentDAO.deleteById(paymentId);
+        if (paymentDAO.existsById(paymentId)) {
+            paymentDAO.deleteById(paymentId);
+        } else {
+            System.out.println("you entered payment Id "+paymentId+" not match");
+        }
     }
 
     @Override
