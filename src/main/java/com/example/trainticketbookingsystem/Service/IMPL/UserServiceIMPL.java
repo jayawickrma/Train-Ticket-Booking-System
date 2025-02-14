@@ -27,10 +27,10 @@ public class UserServiceIMPL implements UserService {
     @Override
     public boolean sendCodeToChangePassword(UserWithKey userWithKey) {
         Optional<UserEntity> byEmail=userDao.findByEmail((userWithKey.getEmail()));
-        if (byEmail.isPresent()){
-            return true;
-        }
-        return false;
+                if (byEmail.isPresent()){
+                    return true;
+                }
+                return false;
 
     }
 }
