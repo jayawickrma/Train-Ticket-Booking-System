@@ -13,6 +13,7 @@ import java.util.List;
 public class TrainDTO implements SuperDTO {
     private String trainId;
     private String trainName;
+    private String trainImage;
     private String route;
     private Integer capacity;
     private List<String> scheduleIds;

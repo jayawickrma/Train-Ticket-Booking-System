@@ -21,6 +21,7 @@ public class TrainEntity implements SuperEntity {
     private String trainName;
     private String route;
     private int capacity;
+    private String trainImage;
 
     @ManyToMany(mappedBy = "trains")
     private List<BookingEntity> bookings;

@@ -47,6 +47,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+        implementation 'net.bytebuddy:byte-buddy:1.14.5' // Use the latest stable version
+
 //    implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 

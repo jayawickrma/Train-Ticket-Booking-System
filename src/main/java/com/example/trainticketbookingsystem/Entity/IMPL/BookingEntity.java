@@ -22,6 +22,12 @@ public class BookingEntity implements SuperEntity {
 
     private int seats;
 
+    @Column(name = "departure_station")
+    private String departureStation;
+    @Column(name = "arrival_station")
+    private String arrivalStation;
+    private String passengerClass;
+    private String travelDate;
     @ManyToOne
     @JoinColumn(name = "User_email")
     private UserEntity user;
@@ -38,8 +44,5 @@ public class BookingEntity implements SuperEntity {
     @JoinColumn(name = "payment_id", referencedColumnName = "paymentId")
     private PaymentEntity payment;
 
-//    private String from;
-//    private String to;
-//    private String passengerClass;
-//    private String travelDate;
+
 }
