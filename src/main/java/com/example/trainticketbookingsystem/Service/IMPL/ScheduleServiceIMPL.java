@@ -42,7 +42,17 @@ public class ScheduleServiceIMPL implements ScheduleService {
 
     @Override
     public List<ScheduleDTO> getAllSchedules() {
-        return null;
+        List<ScheduleDTO>scheduleDTOS =new ArrayList<>();
+        List<ScheduleEntity>scheduleEntities = scheduleDAO.findAll();
+            for (ScheduleEntity schedule :scheduleEntities){
+                ScheduleDTO scheduleDTO =mapping.toScheduleDTO(schedule);
+                    if (schedule.getTrain()!=null){
+                            String trainName =schedule.getTrain().getTrainName();
+                            scheduleDTO.setTrainId(trainName);
+                    }
+                    scheduleDTOS.add(scheduleDTO);
+            }
+            return scheduleDTOS;
     }
 
     @Override

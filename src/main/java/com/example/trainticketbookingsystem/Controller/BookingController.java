@@ -68,6 +68,13 @@ public class BookingController {
     public BookingDTO getBooking(@PathVariable("bookingId")String bookingId){
          return bookingService.getBooking(bookingId);
     }
+
+    @GetMapping(value ="/sample")
+    public String getBookings(){
+        System.out.println("req eka awa =========================");
+        return "gte test mapping";
+    }
+
     @GetMapping
     public List<BookingDTO> bookingDTOList(){
         return bookingService.getAllBookings();

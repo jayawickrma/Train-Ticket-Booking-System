@@ -55,6 +55,7 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
         UserEntity userEntity=userDao.findByEmail(signIn.getEmail())
                 .orElseThrow(()->new NotFoundException("User Not Found"));
         var generateToken =jwtService.generateToken(userEntity);
+        System.out.println("==================================  :"+generateToken);
         return JWTAuthResponse.builder().tokens(generateToken).build();
 
     }
