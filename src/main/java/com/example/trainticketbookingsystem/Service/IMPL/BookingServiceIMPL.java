@@ -64,35 +64,18 @@ private AuthenticationServiceIMPL authenticationServiceIMPL;
 
     @Override
     public List<BookingDTO> getAllBookings() {
-        // Get the email of the currently signed-in user
-        String userEmail = authenticationServiceIMPL.getSignedInUserEmail();
+      List<BookingDTO>bookingDTOList =new ArrayList<>();
+        for (BookingEntity booking :bookingDAO.findAll()){
+            List<String>trins =new ArrayList<>();
+            for (TrainEntity train :booking.getTrains()){
+                trins.add(train.getTrainName());
+            }
+            BookingDTO bookingDTO =mapping.toBookingDTO(booking);
 
-        // Fetch the user entity from the repository using the email
-        UserEntity user = userDAO.findByEmail(userEmail)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with email: " + userEmail));
-
-        // Fetch all bookings for this user
-        List<BookingEntity> userBookings = bookingDAO.findByUser(user);
-
-        return userBookings.stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
-    }
-
-
-    private BookingDTO convertToDTO(BookingEntity booking) {
-        BookingDTO dto = new BookingDTO();
-        dto.setBookingId(String.valueOf(Integer.parseInt(String.valueOf(booking.getBookingId()))));
-        dto.setBookedDate(booking.getBookedDate());
-        dto.setTravelDate(LocalDate.parse(booking.getTravelDate()));
-        dto.setArrivalStation(booking.getArrivalStation());
-        dto.setDepartureStation(booking.getDepartureStation());
-        dto.setPassengerClass(booking.getPassengerClass());
-        dto.setSeats(booking.getSeats());
-        dto.setUserId(String.valueOf(booking.getUser()));
-
-
-        return dto;
+            bookingDTO.setTrainList(trins);
+            bookingDTOList.add(bookingDTO);
+        }
+        return bookingDTOList;
     }
     @Override
     public void deleteBooking(String bookingId) {

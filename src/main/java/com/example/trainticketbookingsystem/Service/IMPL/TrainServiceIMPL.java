@@ -49,7 +49,14 @@ public class TrainServiceIMPL implements TrainService {
 
     @Override
     public List<TrainDTO> getAllTrains() {
-        return null;
+        List<TrainDTO>trainDTOS =new ArrayList<>();
+        List<TrainEntity> train =trainDAO.findAll();
+
+        for (TrainEntity train1 :train){
+            TrainDTO trainDTO =mapping.toTrainDTO(train1);
+            trainDTOS.add(trainDTO);
+        }
+return trainDTOS;
     }
 
     @Override

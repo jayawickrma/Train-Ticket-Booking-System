@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/trainBooking/train")
 public class TrainController {
@@ -55,5 +57,9 @@ public class TrainController {
     @GetMapping(value = "/{trainId}")
     public TrainDTO getTrain(@PathVariable("trainId")String trainId) {
         return trainService.getTrain(trainId);
+    }
+    @GetMapping
+    public List<TrainDTO> getAllTrains(){
+        return trainService.getAllTrains();
     }
 }
