@@ -44,7 +44,8 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
         userDao.save(userEntity1);
         System.out.println(userEntity1);
         String generateToken = jwtService.generateToken(userEntity1);
-        return JWTAuthResponse.builder().tokens(generateToken).build();
+        return JWTAuthResponse.builder().tokens(generateToken)
+                .build();
     }
 
     @Override
@@ -56,7 +57,8 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
                 .orElseThrow(()->new NotFoundException("User Not Found"));
         var generateToken =jwtService.generateToken(userEntity);
         System.out.println("==================================  :"+generateToken);
-        return JWTAuthResponse.builder().tokens(generateToken).build();
+        return JWTAuthResponse.builder().tokens(generateToken)
+                .role(userEntity.getRole()).build();
 
     }
 
