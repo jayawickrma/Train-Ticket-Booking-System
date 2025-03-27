@@ -4,6 +4,7 @@ import com.example.trainticketbookingsystem.DTO.IMPL.BookingDTO;
 import com.example.trainticketbookingsystem.Exception.DataPersistException;
 import com.example.trainticketbookingsystem.Service.BookingService;
 import com.example.trainticketbookingsystem.Service.IMPL.AuthenticationServiceIMPL;
+import com.example.trainticketbookingsystem.Util.IDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/trainBooking/booking")
+@CrossOrigin
 public class BookingController {
     @Autowired
     private BookingService bookingService;
@@ -24,6 +26,7 @@ public class BookingController {
 
     @PostMapping
     public ResponseEntity<Void>saveBooking(@RequestBody BookingDTO bookingDTO){
+        System.out.println(bookingDTO);
         try {
             String UserEmail = authenticationServiceIMPL.getSignedInUserEmail();
             bookingDTO.setUserId(UserEmail);
@@ -69,14 +72,9 @@ public class BookingController {
          return bookingService.getBooking(bookingId);
     }
 
-    @GetMapping(value ="/sample")
-    public String getBookings(){
-        System.out.println("req eka awa =========================");
-        return "gte test mapping";
-    }
-
     @GetMapping
     public List<BookingDTO> bookingDTOList(){
+        System.out.println("req eka awa ============");
         return bookingService.getAllBookings();
     }
 }

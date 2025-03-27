@@ -38,6 +38,7 @@ private AuthenticationServiceIMPL authenticationServiceIMPL;
 
     @Override
     public void saveBooking(BookingDTO bookingDTO) {
+
         bookingDTO.setBookedDate(LocalDate.now());
         BookingEntity booking =mapping.toBookingEntity(bookingDTO);
         Optional<UserEntity> byEmail = userDAO.findByEmail(bookingDTO.getUserId());
@@ -51,10 +52,10 @@ private AuthenticationServiceIMPL authenticationServiceIMPL;
             }
         }
         booking.setTrains(trainEntities);
-        BookingEntity bookingEntity =bookingDAO.save(booking);
+        BookingEntity bookingEntity1 =bookingDAO.save(booking);
 
 
-            if (bookingEntity==null){
+            if (bookingEntity1==null){
                 System.out.println("something went wrong");
             }
 
@@ -81,7 +82,7 @@ private AuthenticationServiceIMPL authenticationServiceIMPL;
 
     private BookingDTO convertToDTO(BookingEntity booking) {
         BookingDTO dto = new BookingDTO();
-        dto.setBookingId(booking.getBookingId());
+        dto.setBookingId(String.valueOf(Integer.parseInt(String.valueOf(booking.getBookingId()))));
         dto.setBookedDate(booking.getBookedDate());
         dto.setTravelDate(LocalDate.parse(booking.getTravelDate()));
         dto.setArrivalStation(booking.getArrivalStation());
