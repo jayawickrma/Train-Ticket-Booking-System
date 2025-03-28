@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @RestController
@@ -59,5 +60,9 @@ public class PaymentController {
     @GetMapping(value = "/{paymentId}")
     public PaymentDTO getPayment(@PathVariable("paymentId")String paymentId){
              return paymentService.getPayment(paymentId);
+    }
+    @GetMapping
+    public List<PaymentDTO> getAllPayments(){
+        return paymentService.getAllPayment();
     }
 }

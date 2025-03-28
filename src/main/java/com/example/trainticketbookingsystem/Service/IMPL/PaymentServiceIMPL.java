@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,7 +49,12 @@ public class PaymentServiceIMPL implements PaymentService {
 
     @Override
     public List<PaymentDTO> getAllPayment() {
-        return null;
+        List<PaymentDTO>paymentDTOS =new ArrayList<>();
+        for (PaymentEntity payment :paymentDAO.findAll()){
+            PaymentDTO paymentDTO =mapping.toPaymentDTO(payment);
+            paymentDTOS.add(paymentDTO);
+        }
+        return paymentDTOS;
     }
 
     @Override
