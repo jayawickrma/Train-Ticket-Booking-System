@@ -55,10 +55,6 @@ private AuthenticationServiceIMPL authenticationServiceIMPL;
         BookingEntity bookingEntity1 =bookingDAO.save(booking);
 
 
-            if (bookingEntity1==null){
-                System.out.println("something went wrong");
-            }
-
     }
 
 
