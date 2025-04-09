@@ -1,10 +1,10 @@
 package com.example.trainticketbookingsystem.Controller;
 
 import com.example.trainticketbookingsystem.DTO.IMPL.BookingDTO;
+import com.example.trainticketbookingsystem.Entity.IMPL.BookingEntity;
 import com.example.trainticketbookingsystem.Exception.DataPersistException;
 import com.example.trainticketbookingsystem.Service.BookingService;
 import com.example.trainticketbookingsystem.Service.IMPL.AuthenticationServiceIMPL;
-import com.example.trainticketbookingsystem.Util.IDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -77,4 +77,9 @@ public class BookingController {
         System.out.println("req eka awa ============");
         return bookingService.getAllBookings();
     }
+//    @GetMapping
+//    public List<BookingEntity> getSignedInUsersBookings(){
+//        String email =authenticationServiceIMPL.getSignedInUserEmail();
+//        return bookingService.getSignedInUsersBookings(email);
+//    }
 }

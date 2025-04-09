@@ -10,8 +10,6 @@ import com.example.trainticketbookingsystem.Entity.IMPL.UserEntity;
 import com.example.trainticketbookingsystem.Exception.NotFoundException;
 import com.example.trainticketbookingsystem.Service.BookingService;
 import com.example.trainticketbookingsystem.Util.Mapping;
-import jakarta.persistence.EntityNotFoundException;
-import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,13 +18,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
 public class BookingServiceIMPL implements BookingService {
-@Autowired
-private AuthenticationServiceIMPL authenticationServiceIMPL;
+
     @Autowired
     private TrainDAO trainDAO;
     @Autowired
@@ -52,7 +48,7 @@ private AuthenticationServiceIMPL authenticationServiceIMPL;
             }
         }
         booking.setTrains(trainEntities);
-        BookingEntity bookingEntity1 =bookingDAO.save(booking);
+        bookingDAO.save(booking);
 
 
     }
@@ -86,7 +82,7 @@ private AuthenticationServiceIMPL authenticationServiceIMPL;
             booking.getTrains().clear();
             bookingDAO.delete(booking);
         }else {
-            new NotFoundException("you enterd id not match");
+            new NotFoundException("Id not Match....");
         }
     }
 
@@ -95,6 +91,11 @@ private AuthenticationServiceIMPL authenticationServiceIMPL;
             BookingEntity booking =bookingDAO.getReferenceById(bookingId);
             return mapping.toBookingDTO(booking);
     }
+
+//    @Override
+//    public List<BookingEntity> getSignedInUsersBookings(String email) {
+//        return bookingDAO.findByUser(email);
+//    }
 
     @Override
     public void updateBooking(BookingDTO bookingDTO, String bookingId) {
